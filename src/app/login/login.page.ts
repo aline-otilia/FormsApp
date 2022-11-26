@@ -46,6 +46,7 @@ export class LoginPage implements OnInit {
 
      if (await this.usuarioService.login(this.email.value, this.senha.value)) {
         alert('Login com Sucesso');
+        this.route.navigateByUrl('/tabs/tab1');
       } else {
         alert('Falha no login');
       }
