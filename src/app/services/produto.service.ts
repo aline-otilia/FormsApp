@@ -26,4 +26,17 @@ export class ProdutoService {
     }
     return this.listaProdutos;
   }
+
+  async salvarID(id: number) {
+    await this.storageService.set('idProduto', id);
+  }
+  async buscarID() {
+    const id = await this.storageService.get('idProduto');
+
+    if (!id) {
+      return 0;
+    }
+
+    return id;
+  }
 }

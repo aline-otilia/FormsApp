@@ -1,15 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>produtos</ion-title>
+    <ion-title>Produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item *ngFor="let produto of listaProdutos">
-    <ion-label>{{produto.nome}}</ion-label>
-    <ion-label>{{produto.descricao}}</ion-label>
-    <ion-label>{{produto.validade}}</ion-label>
-    <ion-label>{{produto.preco}}</ion-label>
+    <ion-label>
+      <h3>{{produto.nome}}</h3>
+      <p>{{produto.descricao}}</p>
+      <ion-label>
+        {{produto.validade}}
+        <span>{{produto.preco | currency : 'BRL'}}</span>
+      </ion-label>
+    </ion-label>
+
   </ion-item>
 
   <ion-button (click)="cadastrarProduto()">
