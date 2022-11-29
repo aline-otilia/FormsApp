@@ -11,7 +11,7 @@ import { ProdutoService } from '../services/produto.service';
 export class ProdutosPage implements OnInit {
   listaProdutos: Produto[] = [];
 
-  constructor(private produtoService: ProdutoService, private route: Router) {}
+  constructor(private produtoService: ProdutoService, private route: Router) { }
 
   async buscarProdutos() {
     this.listaProdutos = await this.produtoService.buscarTodos();
@@ -21,9 +21,17 @@ export class ProdutosPage implements OnInit {
     this.buscarProdutos();
   }
 
-  cadastrarProduto(){
+  cadastrarProduto() {
     this.route.navigateByUrl('/cadastro-produto');
   }
 
-  ngOnInit(): void {}
+  async deletar(produto: Produto) {
+    if (confirm(`Deseja Deletar ${produto.nome}?`)) {
+      await this.produtoService.deletar(produto.id);
+      this.route.navigateByUrl("/produtos");
+    }
+
+  }
+
+  ngOnInit(): void { }
 }

@@ -1,0 +1,20 @@
+ion-label h2 {
+    font-weight: 900;
+}
+
+.datapreco {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.descricao {
+    white-space: pre-wrap;
+}
+
+.preco {
+    color: #ffffff;
+    background-color: #f10000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

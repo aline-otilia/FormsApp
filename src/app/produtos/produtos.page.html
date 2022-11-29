@@ -5,19 +5,19 @@
 </ion-header>
 
 <ion-content>
+  <ion-button (click)="cadastrarProduto()" color="dark" expand="block">
+    CADASTRAR NOVO PRODUTO
+  </ion-button>
   <ion-item *ngFor="let produto of listaProdutos">
     <ion-label>
-      <h3>{{produto.nome}}</h3>
-      <p>{{produto.descricao}}</p>
-      <ion-label>
-        {{produto.validade}}
-        <span>{{produto.preco | currency : 'BRL'}}</span>
+      <h2>{{produto.nome}}</h2>
+      <p class="descricao">{{produto.descricao}}</p>
+      <ion-label class="datapreco">
+        <span>{{produto.validade  | date }}</span>
+        <span class="preco">{{produto.preco | currency : 'BRL'}}</span>
       </ion-label>
+      <ion-button (click)="deletar(produto)" hidden>Deletar</ion-button>
     </ion-label>
 
   </ion-item>
-
-  <ion-button (click)="cadastrarProduto()">
-    CADASTRAR
-  </ion-button>
 </ion-content>

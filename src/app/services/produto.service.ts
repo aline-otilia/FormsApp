@@ -16,12 +16,19 @@ export class ProdutoService {
     this.storageService.set('produtos', this.listaProdutos);
   }
 
+  async deletar(id:number){
+    await this.buscarTodos();
+    this.listaProdutos.splice(id, 1);
+    console.log(this.listaProdutos);
+    this.storageService.set('produtos', this.listaProdutos);
+  }
+
   async buscarTodos() {
     this.listaProdutos = (await this.storageService.get(
       'produtos'
     )) as unknown as Produto[];
 
-    if (!this.listaProdutos) {
+    if (!this.listaProdutos || this.listaProdutos === []) {
       this.listaProdutos = [];
     }
     return this.listaProdutos;
